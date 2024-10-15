@@ -1,0 +1,2413 @@
+{
+  "id": "d46b324b-5004-4060-b3ac-3e065c3e0be1",
+  "version": "2.0",
+  "name": "MantisBT",
+  "url": "http://localhost:3000/mantisbt",
+  "tests": [{
+    "id": "f9dc687d-ee9b-4699-bae6-cddd510da149",
+    "name": "LoginTest",
+    "commands": [{
+      "id": "c80a3e97-d549-4d3c-b9db-f4125cdd1c43",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d68e0f6e-c24c-4fa2-b2a8-4aa372b34225",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:LoginPage:AdministratorLogin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "35aaad2f-cd1d-4914-8001-4fe4fa05c288",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c1c38d1d-1991-40e9-9fba-0303c6abbed7",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "dfd22677-fe69-4d7d-965d-76cee2cc7a40",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "255a9563-ae63-4118-b9b0-6898a3253db9",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "0ba074dc-8fd8-484d-9b7f-4f19eba699ba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3bc7514e-78df-481b-9bb7-6ff5f09541b3",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//span[contains(.,'administrator')]",
+      "targets": [
+        ["css=.login-info-left > .italic", "css:finder"],
+        ["xpath=//td/span", "xpath:position"],
+        ["xpath=//span[contains(.,'administrator')]", "xpath:innerText"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "1304f481-97eb-49de-ac75-47d9657efc11",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "39502e73-709f-4856-98da-758dbb4448b7",
+    "name": "AddUserTest",
+    "commands": [{
+      "id": "f4068035-a797-4632-b0a3-358eaafbd1ac",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89ed2a4e-c06c-4ff6-9f24-c1e14faced58",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageUserPage:AddUser",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "28c07610-2742-4ec5-8c47-a1ee7247f954",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8c1d354-3294-498e-b80b-b3a7be4fb0a8",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "c350408e-2dba-46e2-a4d0-c156bb856e6a",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9efd96f-4a87-499b-b630-99eb2ba94abe",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "335cd679-2d15-4af7-8a9f-189969c5e9fa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b087929a-64f5-4f14-9b69-4931bd22e23b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6ed9ca62-987c-42a4-9d78-8f14d58a9664",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Users",
+      "targets": [
+        ["linkText=Manage Users", "linkText"],
+        ["css=.bracket-link:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Users')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_user_page.php')]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Users')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8121df98-3fdb-4d5d-bc29-f370f81ed69a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-title .button-small",
+      "targets": [
+        ["css=.form-title .button-small", "css:finder"],
+        ["xpath=//input[@value='Create New Account']", "xpath:attributes"],
+        ["xpath=//table[3]/tbody/tr/td/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7fd8b663-fc71-4cda-b122-f04acf5985ad",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e74acec1-d9c7-41a8-bcb3-7016bd673fd0",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=//input[@name='username']",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "username001"
+    }, {
+      "id": "b7e4ad8b-6a56-4bc5-9bef-b97f8200a8ee",
+      "comment": "",
+      "command": "click",
+      "target": "name=realname",
+      "targets": [
+        ["name=realname", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='realname']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "065326f5-f829-4cf1-9481-53c2b0fb5dd4",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=//input[@name='realname']",
+      "targets": [
+        ["name=realname", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='realname']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "username001"
+    }, {
+      "id": "5f4f6679-077c-4c36-9ec9-b0d209c628e9",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.row-1:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f61810b1-2847-496a-bd86-70e728061005",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=//input[@name='email']",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.row-1:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": "username@username.it"
+    }, {
+      "id": "174d5816-0bcb-493e-9336-348628e05bf0",
+      "comment": "",
+      "command": "click",
+      "target": "name=access_level",
+      "targets": [
+        ["name=access_level", "name"],
+        ["css=td > select", "css:finder"],
+        ["xpath=//select[@name='access_level']", "xpath:attributes"],
+        ["xpath=//td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a88ec233-576e-4d03-8dff-4a01593cd098",
+      "comment": "",
+      "command": "select",
+      "target": "name=access_level",
+      "targets": [],
+      "value": "label=updater"
+    }, {
+      "id": "fe8078f4-1424-4676-86f9-61eccb2fb02c",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//option[@value='40']",
+      "targets": [
+        ["css=option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='40']", "xpath:attributes"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'updater')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c6a0b98-495e-43dd-92df-c74d9c569bc5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Create User']", "xpath:attributes"],
+        ["xpath=//tr[8]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3d5c2b8-1be4-4e73-9436-0cb0cf747cb2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Users",
+      "targets": [
+        ["linkText=Manage Users", "linkText"],
+        ["css=.bracket-link:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Users')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_user_page.php')]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Users')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f3fefb3-1083-4b30-9f5b-da2265ce8da9",
+      "comment": "",
+      "command": "assertValue",
+      "target": "name=username",
+      "targets": [],
+      "value": "username001"
+    }, {
+      "id": "10a34159-b128-4dd0-b3a9-18efabc93c96",
+      "comment": "",
+      "command": "assertValue",
+      "target": "xpath=//input[@name='realname']",
+      "targets": [],
+      "value": "username001"
+    }, {
+      "id": "c12437aa-1b97-42dd-ba85-348d5af84072",
+      "comment": "",
+      "command": "assertValue",
+      "target": "xpath=//input[@name='email']",
+      "targets": [],
+      "value": "username@username.it"
+    }, {
+      "id": "1a6c6558-f44a-44f6-ac85-9fb1fc19090b",
+      "comment": "",
+      "command": "assertSelectedLabel",
+      "target": "xpath=//select[@name='access_level']",
+      "targets": [],
+      "value": "updater"
+    }, {
+      "id": "769d39eb-d315-4731-88dd-b117aa8dd6e8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "3413a1c8-e0a3-4eba-98b1-bc7aa521b066",
+    "name": "AddExistingUserFailsTest",
+    "commands": [{
+      "id": "2602d555-faa8-4530-b628-aca3de75612c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0d02512b-cf7e-4455-982d-cb84b51cf4f0",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageUserPage:AddExistingUserFails",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "38a4a434-7383-4ccf-b2af-f216869eb1a5",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "100c9207-0495-4756-9621-a40571c6b30c",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "a14e01bc-e17e-47e5-ab02-c13de6ee30de",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c40379b5-3ed8-4298-bbac-1a40da3fefd8",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "065e3a1a-ff71-4108-a194-f53d8b6893ca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "207b7175-b28e-47ad-8598-04d8a92342f2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "48b00fae-2868-499e-9c09-8343adfaf248",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Users",
+      "targets": [
+        ["linkText=Manage Users", "linkText"],
+        ["css=.bracket-link:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Users')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_user_page.php')]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Users')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d14fb993-2870-4a6c-971f-aab6616157f3",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Create New Account']",
+      "targets": [
+        ["css=.form-title .button-small", "css:finder"],
+        ["xpath=//input[@value='Create New Account']", "xpath:attributes"],
+        ["xpath=//table[3]/tbody/tr/td/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83d34685-1bbb-401c-b224-ce277e405a28",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "059c81c8-6278-4c71-90c5-62950f7f4df9",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=//input[@name='username']",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "username001"
+    }, {
+      "id": "4590d4c3-078a-4b26-bc9e-a3694d2234ab",
+      "comment": "",
+      "command": "click",
+      "target": "name=realname",
+      "targets": [
+        ["name=realname", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='realname']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d048878c-e304-4881-bd00-aa76e136aeab",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=//input[@name='realname']",
+      "targets": [
+        ["name=realname", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='realname']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "username001"
+    }, {
+      "id": "1e34be3e-cae6-4625-9cab-b9420ec2336a",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.row-1:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b08b3d3-4c4c-4d0e-9e1d-d4ea2ee57d32",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=//input[@name='email']",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.row-1:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": "username@username.it"
+    }, {
+      "id": "0937f0ea-0d53-476c-ae79-e9400a26a0bf",
+      "comment": "",
+      "command": "click",
+      "target": "name=access_level",
+      "targets": [
+        ["name=access_level", "name"],
+        ["css=td > select", "css:finder"],
+        ["xpath=//select[@name='access_level']", "xpath:attributes"],
+        ["xpath=//td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b272da1-3951-46cd-8e20-2088f5b71e93",
+      "comment": "",
+      "command": "select",
+      "target": "name=access_level",
+      "targets": [],
+      "value": "label=updater"
+    }, {
+      "id": "64e4f0b6-2089-4438-93a5-4e754edfe29a",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//option[@value='40']",
+      "targets": [
+        ["css=option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='40']", "xpath:attributes"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'updater')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e980d79d-991e-48e7-bb05-7648385545c5",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Create User']",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Create User']", "xpath:attributes"],
+        ["xpath=//tr[8]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6314cf6c-2654-45da-90e7-78f4f5878289",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//p[contains(.,'That username is already being used. Please go back and select another one.')]",
+      "targets": [
+        ["css=tr:nth-child(2) .center", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'That username is already being used. Please go back and select another one.')]", "xpath:innerText"]
+      ],
+      "value": "That username is already being used. Please go back and select another one."
+    }, {
+      "id": "56c684de-29dd-442f-a66c-cd0f5f1cffe8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f3fce757-1a7f-4e58-ba50-dc80f426a0a3",
+    "name": "AddEmptyUserFailsTest",
+    "commands": [{
+      "id": "9a0fe60e-4a12-442b-8871-76c8928f627b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa344d2c-c923-4868-b26b-efac2f0ac5b6",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageUserPage:AddEmptyUserFails",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33d9f737-2d8d-41da-b1e9-396549118f48",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f834689-5f6a-4aa2-9fcc-557ffc8d6b2a",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "ca43e457-549b-4b5a-b5bb-6bcc7c551f53",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68df7ac7-5748-484a-b58b-696abb52d3c3",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "f607a3da-e160-484d-a251-374889ddbbba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b7b8359-24d5-454e-bc94-673decc464b0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2569efe6-e160-49d1-81a6-255e4bb5a33d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Users",
+      "targets": [
+        ["linkText=Manage Users", "linkText"],
+        ["css=.bracket-link:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Users')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_user_page.php')]", "xpath:href"],
+        ["xpath=//span/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Users')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "43f72bb5-64f5-4ebf-a996-c9dad06eb5eb",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Create New Account']",
+      "targets": [
+        ["css=.form-title .button-small", "css:finder"],
+        ["xpath=//input[@value='Create New Account']", "xpath:attributes"],
+        ["xpath=//table[3]/tbody/tr/td/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d841337e-bfc7-4812-9f58-8a378ea834ee",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Create User']",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Create User']", "xpath:attributes"],
+        ["xpath=//tr[8]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e8305df4-64e3-4169-aefe-034cacb60d34",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//p[contains(.,'A necessary field \"\" was empty. Please recheck your inputs.')]",
+      "targets": [
+        ["css=tr:nth-child(2) .center", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'A necessary field \"\" was empty. Please recheck your inputs.')]", "xpath:innerText"]
+      ],
+      "value": "A necessary field \"\" was empty. Please recheck your inputs."
+    }, {
+      "id": "c87ae438-9e7f-476b-9cbf-cfee5bf63461",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "33384a64-f5b5-44de-9cc2-4ff5fcaff4cc",
+    "name": "AddProjectTest",
+    "commands": [{
+      "id": "798faf1e-cd75-4e43-b21e-904681651316",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "71419048-771c-480c-965c-78e1ba4d4011",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageProjectsPage:AddProject",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2959cae0-4ad5-4d67-bec5-4fe7ec94ee7b",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "19d140b6-90ce-4980-a55e-086103f6908e",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "23b3486b-79e8-4b6d-8091-5f0d36ab6ad9",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ade7b04-e776-4a27-82dc-1ac75f3b9958",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "96751355-1adc-4635-af32-c151bdac0c02",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "994bd900-173d-49cf-a55a-4a38a2cfba92",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f6df42f-8313-4a43-a38e-f106cd6706d8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Projects",
+      "targets": [
+        ["linkText=Manage Projects", "linkText"],
+        ["css=.bracket-link:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Projects')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_proj_page.php')]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Projects')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "88d6e51a-57d8-4701-9590-26ee1e9fc8b4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-title .button-small",
+      "targets": [
+        ["css=.form-title .button-small", "css:finder"],
+        ["xpath=//input[@value='Create New Project']", "xpath:attributes"],
+        ["xpath=//table[3]/tbody/tr/td/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7a0dce9-6c8f-449c-8a14-4d22fd2e926d",
+      "comment": "",
+      "command": "click",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=.row-1 input", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2259f933-dc0b-4391-986f-411a0ad00015",
+      "comment": "",
+      "command": "type",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=.row-1 input", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "Project001"
+    }, {
+      "id": "f0968277-e7bf-4131-ab86-623b8967825b",
+      "comment": "",
+      "command": "click",
+      "target": "name=status",
+      "targets": [
+        ["name=status", "name"],
+        ["css=.row-2 select", "css:finder"],
+        ["xpath=//select[@name='status']", "xpath:attributes"],
+        ["xpath=//td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fde3a73-fef7-48b0-9e90-e56847db2bd0",
+      "comment": "",
+      "command": "select",
+      "target": "name=status",
+      "targets": [],
+      "value": "label=release"
+    }, {
+      "id": "7deb54fd-e6f7-4e57-ba33-e9d32032649d",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//option[@value='30']",
+      "targets": [
+        ["css=.row-2 option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='30']", "xpath:attributes"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'release')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1dfbb12c-f56b-4570-9055-f8e83d57be2f",
+      "comment": "",
+      "command": "click",
+      "target": "name=view_state",
+      "targets": [
+        ["name=view_state", "name"],
+        ["css=.row-1 select", "css:finder"],
+        ["xpath=//select[@name='view_state']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83422a34-e6e5-43db-8aa1-d5c0dbdb3a8f",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//option[@value='10'])[2]",
+      "targets": [
+        ["css=.row-1 option:nth-child(1)", "css:finder"],
+        ["xpath=(//option[@value='10'])[2]", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/select/option", "xpath:position"],
+        ["xpath=//option[contains(.,'public')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a76aeaaa-6aaa-491e-9acf-a33306d81431",
+      "comment": "",
+      "command": "click",
+      "target": "name=description",
+      "targets": [
+        ["name=description", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98d9a6c3-934f-423f-b006-b98ad501179c",
+      "comment": "",
+      "command": "type",
+      "target": "name=description",
+      "targets": [
+        ["name=description", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Description"
+    }, {
+      "id": "74d210b6-0df8-4fc2-939d-d3bea2317b7a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Add Project']", "xpath:attributes"],
+        ["xpath=//tr[8]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7fbcf0d3-3cca-44e4-b60f-7780ffc69b94",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "5d52e0b2-a177-48ed-8c9f-73f06d862760",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f2507bc-cbcc-4d9f-91e1-a84b987b2871",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Projects",
+      "targets": [
+        ["linkText=Manage Projects", "linkText"],
+        ["css=.bracket-link:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Projects')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_proj_page.php')]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Projects')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4304e483-406d-4081-90b0-c3f4c92bbd41",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=Project001",
+      "targets": [
+        ["linkText=Project001", "linkText"],
+        ["css=.row-1 a", "css:finder"],
+        ["xpath=//a[contains(text(),'Project001')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'manage_proj_edit_page.php?project_id=1')]", "xpath:href"],
+        ["xpath=//tr[3]/td/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Project001')]", "xpath:innerText"]
+      ],
+      "value": "Project001"
+    }, {
+      "id": "f36db520-d743-4390-87d7-daaebc3645df",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//tr[3]/td[2]",
+      "targets": [
+        ["css=.row-1 > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[3]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'release')]", "xpath:innerText"]
+      ],
+      "value": "release"
+    }, {
+      "id": "558f32c2-f714-4a72-a7b7-e5e4f892fae8",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//tr[3]/td[4]",
+      "targets": [
+        ["css=.row-1 > td:nth-child(4)", "css:finder"],
+        ["xpath=//tr[3]/td[4]", "xpath:position"],
+        ["xpath=//td[contains(.,'public')]", "xpath:innerText"]
+      ],
+      "value": "public"
+    }, {
+      "id": "9fcd6888-ce11-4807-a370-3904fa9027d5",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//tr[3]/td[5]",
+      "targets": [
+        ["css=.row-1 > td:nth-child(5)", "css:finder"],
+        ["xpath=//tr[3]/td[5]", "xpath:position"]
+      ],
+      "value": "Description"
+    }, {
+      "id": "27f7da97-22b8-4428-bab4-36f823b1d946",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "6b2e6b6c-3c8a-4394-910c-e5c2ea94f4b2",
+    "name": "AddExistingProjectFailsTest",
+    "commands": [{
+      "id": "d83749f7-6085-4f50-b716-bc64fe69a604",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "153b1583-e623-4ffa-ab8e-9b6976a1aae0",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageProjectsPage:AddExistingProjectFails",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69b0222d-cd12-4c46-942e-54d8f7f783f6",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b9739ec-e056-4ccd-b21a-28c92772e5c8",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "26011e43-0ff8-44cd-9fef-351e62f91802",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6a54381-2b6c-4685-86e0-d6c37d98423c",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "33490eb4-c8e8-4abe-8eb5-5fa5f31b854a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e12adbf0-0d2e-45d6-9379-7bc9f84b1cd1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "57b75a1e-491f-4ca6-af28-797a7108488f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Projects",
+      "targets": [
+        ["linkText=Manage Projects", "linkText"],
+        ["css=.bracket-link:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Projects')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_proj_page.php')]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Projects')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b4b2916-d630-49f1-a4a0-494c78498e1c",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Create New Project']",
+      "targets": [
+        ["css=.form-title .button-small", "css:finder"],
+        ["xpath=//input[@value='Create New Project']", "xpath:attributes"],
+        ["xpath=//table[3]/tbody/tr/td/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5e1dc91-4c4d-4561-8d1f-1fa865e36027",
+      "comment": "",
+      "command": "click",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=.row-1 input", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f7797db-b63b-4c21-a2ab-19a61f20dc33",
+      "comment": "",
+      "command": "type",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=.row-1 input", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "Project001"
+    }, {
+      "id": "faa3ffde-ed82-4962-8894-59d9c10d0349",
+      "comment": "",
+      "command": "click",
+      "target": "name=status",
+      "targets": [
+        ["name=status", "name"],
+        ["css=.row-2 select", "css:finder"],
+        ["xpath=//select[@name='status']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffac61a8-9e76-4548-8997-ce7b926e201e",
+      "comment": "",
+      "command": "select",
+      "target": "name=status",
+      "targets": [],
+      "value": "label=release"
+    }, {
+      "id": "fa693ad9-6c92-4547-a963-c4b9ab512fb0",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//option[@value='30']",
+      "targets": [
+        ["css=.row-2 option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='30']", "xpath:attributes"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'release')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4ce5287-ba1a-4990-b06d-84c91877aaa2",
+      "comment": "",
+      "command": "click",
+      "target": "name=view_state",
+      "targets": [
+        ["name=view_state", "name"],
+        ["css=.row-1 select", "css:finder"],
+        ["xpath=//select[@name='view_state']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07ed65e3-d954-4e4d-9675-5a96383ede7b",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//option[@value='10'])[2]",
+      "targets": [
+        ["css=.row-1 option:nth-child(1)", "css:finder"],
+        ["xpath=(//option[@value='10'])[2]", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/select/option", "xpath:position"],
+        ["xpath=//option[contains(.,'public')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f8eab35-3cc1-48f3-87a3-b1cdec1acbfb",
+      "comment": "",
+      "command": "click",
+      "target": "name=description",
+      "targets": [
+        ["name=description", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b07a75b3-2a24-4a33-864c-d14b25b13ba6",
+      "comment": "",
+      "command": "type",
+      "target": "name=description",
+      "targets": [
+        ["name=description", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Description"
+    }, {
+      "id": "fc175f4e-f7cc-408a-a1fd-3f7697e1c8e2",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Add Project']",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Add Project']", "xpath:attributes"],
+        ["xpath=//tr[8]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "81d316dd-6580-4440-bb1b-aa092b18d719",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//p[contains(.,'A project with that name already exists. Please go back and enter a different name.')]",
+      "targets": [
+        ["css=tr:nth-child(2) .center", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'A project with that name already exists. Please go back and enter a different name.')]", "xpath:innerText"]
+      ],
+      "value": "A project with that name already exists. Please go back and enter a different name."
+    }, {
+      "id": "c0b54ecc-9619-41b4-9812-ff86857e2692",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "cab5dfb0-06c8-4468-adbd-db71771fdead",
+    "name": "AddCategoryTest",
+    "commands": [{
+      "id": "6eef3d13-1bb3-481a-87f7-bcc1294bb640",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bd3ddb31-6558-47d7-82d9-b7a63d5a9c3f",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageCategoryPage:AddCategory",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0d50c3c5-86b0-41e6-b5c0-aa6fccef9547",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c4714b2-9a20-4802-bc5a-de94c13fd456",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "d93dba72-ea58-473c-b46b-1a8a19ff723c",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0303a79-7433-4d45-8645-61934098d853",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "88b92773-aca9-4adb-a8c3-592fe82a52ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "269af603-3d2e-4296-be30-37e5d1baf415",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3623ff62-4bdd-400c-b5a8-bcb769123b0e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Projects",
+      "targets": [
+        ["linkText=Manage Projects", "linkText"],
+        ["css=.bracket-link:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Projects')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_proj_page.php')]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Projects')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "97cf0ac1-d178-4d0a-b7eb-87b7fbd21c32",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Project001",
+      "targets": [
+        ["linkText=Project001", "linkText"],
+        ["css=.row-1 a", "css:finder"],
+        ["xpath=//a[contains(text(),'Project001')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'manage_proj_edit_page.php?project_id=2')]", "xpath:href"],
+        ["xpath=//tr[3]/td/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Project001')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2d13ddd3-4f0b-4197-8ec4-d0884f2bd1bc",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//input[@name='name'])[2]",
+      "targets": [
+        ["css=tr:nth-child(4) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='name'])[2]", "xpath:attributes"],
+        ["xpath=//tr[4]/td/form/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba095429-4c66-472f-b862-587931aafcfc",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=(//input[@name='name'])[2]",
+      "targets": [
+        ["css=tr:nth-child(4) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='name'])[2]", "xpath:attributes"],
+        ["xpath=//tr[4]/td/form/input[3]", "xpath:position"]
+      ],
+      "value": "Category001"
+    }, {
+      "id": "18b1f8e3-55f7-4bda-ad8a-fa33292c2a8a",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Add Category']",
+      "targets": [
+        ["css=tr:nth-child(4) .button", "css:finder"],
+        ["xpath=//input[@value='Add Category']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1cfbde9-f7a3-4583-87ec-90c2977b480a",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//a/table/tbody/tr[3]/td",
+      "targets": [
+        ["css=tbody:nth-child(1) > .row-1:nth-child(3) > td:nth-child(1)", "css:finder"],
+        ["xpath=//a/table/tbody/tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Category001')]", "xpath:innerText"]
+      ],
+      "value": "Category001"
+    }, {
+      "id": "a584fed1-55a3-4762-aa64-b9b97462c8c0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "91c8ebc6-df07-4857-bd4a-6f5fa3e0db65",
+    "name": "AddExistingCategoryFailsTest",
+    "commands": [{
+      "id": "d41f0d32-05b2-4fae-84e1-e840ec57a7c0",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e3354d28-9c9e-4dd9-8b65-7dd709028886",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageCategoryPage:AddExistingCategoryFails",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3999120-62c6-405f-aacf-5adc24bae0a9",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9216cbaa-8e04-4072-87e3-00fd719d6849",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "1628df1d-05a6-472f-9a9d-564db13d459c",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c043e60-e1fe-4072-b587-bec4c0f45217",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "ac394236-b2f4-4e26-9be6-fd5160a3265e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed7ca56c-e28f-4dc8-bdeb-729295984ef8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage",
+      "targets": [
+        ["linkText=Manage", "linkText"],
+        ["css=a:nth-child(8)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_overview_page.php')]", "xpath:href"],
+        ["xpath=//a[8]", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4db95c1-dff4-4e0d-8f2f-39ca8119922d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Projects",
+      "targets": [
+        ["linkText=Manage Projects", "linkText"],
+        ["css=.bracket-link:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Projects')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/manage_proj_page.php')]", "xpath:href"],
+        ["xpath=//span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Projects')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d244ec79-73b5-4cb6-9e47-d85c94e1e9ce",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Project001",
+      "targets": [
+        ["linkText=Project001", "linkText"],
+        ["css=.row-1 a", "css:finder"],
+        ["xpath=//a[contains(text(),'Project001')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'manage_proj_edit_page.php?project_id=2')]", "xpath:href"],
+        ["xpath=//tr[3]/td/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Project001')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b2b665a2-c088-4c5d-997f-64ac48a18561",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//input[@name='name'])[2]",
+      "targets": [
+        ["css=tr:nth-child(5) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='name'])[2]", "xpath:attributes"],
+        ["xpath=//tr[5]/td/form/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e78a4c5b-ef5d-4f17-9be7-7875a0c206a9",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=(//input[@name='name'])[2]",
+      "targets": [
+        ["css=tr:nth-child(5) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='name'])[2]", "xpath:attributes"],
+        ["xpath=//tr[5]/td/form/input[3]", "xpath:position"]
+      ],
+      "value": "Category001"
+    }, {
+      "id": "6016089c-9414-4d22-bef2-d6b3ec2dcbaf",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Add Category']",
+      "targets": [
+        ["css=tr:nth-child(5) .button", "css:finder"],
+        ["xpath=//input[@value='Add Category']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce5084d5-d5a5-4470-a7cd-a8cc836e7522",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//p[contains(.,'A category with that name already exists.')]",
+      "targets": [
+        ["css=tr:nth-child(2) .center", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'A category with that name already exists.')]", "xpath:innerText"]
+      ],
+      "value": "A category with that name already exists."
+    }, {
+      "id": "55a55061-0eab-4277-a87c-9b6d0873a3f7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a12155e0-f53f-42ba-8f42-deb5e2e0dc0e",
+    "name": "AddIssueTest",
+    "commands": [{
+      "id": "22cce40f-e4c0-4507-81b2-98b6c5022a1a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4fd0366-6aab-43f9-bc9d-e4d11619e3f6",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageIssuePage:AddIssue",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b23f8a04-675f-4af6-8480-9c4e22c3d452",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "efad2955-d4aa-4696-83ec-fd58c865ada3",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "9046df6f-e64a-4a3a-b5e9-bfc978d99699",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3e44052d-01cf-467a-9a46-f024642b3076",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "94c0dea9-694d-4332-868e-32b3a2af027d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db3e144e-f852-4fd1-a389-a12adcbc4f18",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Report Issue",
+      "targets": [
+        ["linkText=Report Issue", "linkText"],
+        ["css=a:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Report Issue')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/bug_report_page.php')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Report Issue')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fd28abeb-a668-4d49-aaed-230ade887deb",
+      "comment": "",
+      "command": "click",
+      "target": "name=category_id",
+      "targets": [
+        ["name=category_id", "name"],
+        ["css=.row-1:nth-child(2) select", "css:finder"],
+        ["xpath=//select[@name='category_id']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40ffd24f-4571-44d1-8a62-0a4c7b8863ed",
+      "comment": "",
+      "command": "select",
+      "target": "name=category_id",
+      "targets": [],
+      "value": "label=Category001"
+    }, {
+      "id": "0d70bb1d-cfb2-4299-96a2-004436ac1c38",
+      "comment": "",
+      "command": "click",
+      "target": "name=reproducibility",
+      "targets": [
+        ["name=reproducibility", "name"],
+        ["css=.row-2:nth-child(3) select", "css:finder"],
+        ["xpath=//select[@name='reproducibility']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c801001-0af8-4098-8194-33e4f4025eaa",
+      "comment": "",
+      "command": "select",
+      "target": "name=reproducibility",
+      "targets": [],
+      "value": "label=random"
+    }, {
+      "id": "64d54bc5-ff69-4677-923d-5e174b47ddd7",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//option[@value='50']",
+      "targets": [
+        ["css=.row-2:nth-child(3) option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='50']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/select/option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'random')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "232da79c-3f57-42dc-9623-c02462ea8fd4",
+      "comment": "",
+      "command": "click",
+      "target": "name=severity",
+      "targets": [
+        ["name=severity", "name"],
+        ["css=.row-1:nth-child(4) select", "css:finder"],
+        ["xpath=//select[@name='severity']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7bcb49d0-88d5-4a1f-85bd-10692d9e88bc",
+      "comment": "",
+      "command": "select",
+      "target": "name=severity",
+      "targets": [],
+      "value": "label=crash"
+    }, {
+      "id": "da0b43c9-1975-45d8-8f88-24b6f9186ddf",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//option[@value='70'])[2]",
+      "targets": [
+        ["css=option:nth-child(7)", "css:finder"],
+        ["xpath=(//option[@value='70'])[2]", "xpath:attributes"],
+        ["xpath=//option[7]", "xpath:position"],
+        ["xpath=//option[contains(.,'crash')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "68d030e2-86cf-4608-84ba-e6be5fc5d34f",
+      "comment": "",
+      "command": "click",
+      "target": "name=priority",
+      "targets": [
+        ["name=priority", "name"],
+        ["css=.row-2:nth-child(5) select", "css:finder"],
+        ["xpath=//select[@name='priority']", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f9f5b3c-c30b-48a5-9b8b-d7ced50fb354",
+      "comment": "",
+      "command": "select",
+      "target": "name=priority",
+      "targets": [],
+      "value": "label=immediate"
+    }, {
+      "id": "f18e07ca-0c99-44a9-bef6-ec41d95087c1",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//option[@value='60'])[2]",
+      "targets": [
+        ["css=.row-2:nth-child(5) option:nth-child(6)", "css:finder"],
+        ["xpath=(//option[@value='60'])[2]", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/select/option[6]", "xpath:position"],
+        ["xpath=//option[contains(.,'immediate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "570fd81a-3f07-42cb-9953-a01d9634d183",
+      "comment": "",
+      "command": "click",
+      "target": "name=summary",
+      "targets": [
+        ["name=summary", "name"],
+        ["css=.row-1:nth-child(9) input", "css:finder"],
+        ["xpath=//input[@name='summary']", "xpath:attributes"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "39ea8b41-119c-4ed4-9b2e-b5231ece5252",
+      "comment": "",
+      "command": "type",
+      "target": "name=summary",
+      "targets": [
+        ["name=summary", "name"],
+        ["css=.row-1:nth-child(9) input", "css:finder"],
+        ["xpath=//input[@name='summary']", "xpath:attributes"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Summary001"
+    }, {
+      "id": "d3d4ae59-6925-4b3c-b4fe-18b55b99489f",
+      "comment": "",
+      "command": "click",
+      "target": "name=description",
+      "targets": [
+        ["name=description", "name"],
+        ["css=.row-2:nth-child(10) textarea", "css:finder"],
+        ["xpath=//textarea[@name='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c3081e9-b9c8-4f7f-9500-cce95cd71737",
+      "comment": "",
+      "command": "type",
+      "target": "name=description",
+      "targets": [
+        ["name=description", "name"],
+        ["css=.row-2:nth-child(10) textarea", "css:finder"],
+        ["xpath=//textarea[@name='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "description001"
+    }, {
+      "id": "876a7ba2-eeb4-4c05-b353-0ba8b9a3f7d0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Submit Report']", "xpath:attributes"],
+        ["xpath=//tr[16]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fdf55357-5b9d-4477-8686-b0172052d734",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Issues",
+      "targets": [
+        ["linkText=View Issues", "linkText"],
+        ["css=a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Issues')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/view_all_bug_page.php')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'View Issues')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b334646-cd62-4a39-84c6-ab9422ce5d46",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//table[@id='buglist']/tbody/tr[4]/td[6]",
+      "targets": [
+        ["css=.center:nth-child(6)", "css:finder"],
+        ["xpath=//table[@id='buglist']/tbody/tr[4]/td[6]", "xpath:idRelative"],
+        ["xpath=//body/form/table/tbody/tr[4]/td[6]", "xpath:position"],
+        ["xpath=//td[contains(.,'Category001')]", "xpath:innerText"]
+      ],
+      "value": "Category001"
+    }, {
+      "id": "030a4197-e157-409f-a431-9400d64f41db",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//table[@id='buglist']/tbody/tr[4]/td[7]/span",
+      "targets": [
+        ["css=.center:nth-child(7) > .bold", "css:finder"],
+        ["xpath=//table[@id='buglist']/tbody/tr[4]/td[7]/span", "xpath:idRelative"],
+        ["xpath=//td[7]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'crash')]", "xpath:innerText"]
+      ],
+      "value": "crash"
+    }, {
+      "id": "5b9f203f-e5f1-4db0-bbe4-aead7123c1ff",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//table[@id='buglist']/tbody/tr[4]/td[10]",
+      "targets": [
+        ["css=.left:nth-child(10)", "css:finder"],
+        ["xpath=//table[@id='buglist']/tbody/tr[4]/td[10]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[10]", "xpath:position"],
+        ["xpath=//td[contains(.,'Summary001')]", "xpath:innerText"]
+      ],
+      "value": "Summary001"
+    }, {
+      "id": "37f066d3-1cee-4052-91e3-16c435f7876a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fc2f5aa6-eba1-41fe-ad77-199673967be2",
+    "name": "AssignIssueTest",
+    "commands": [{
+      "id": "8b324c0f-039e-49c4-a901-a308fffdc266",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d7d23258-82bc-4f34-938d-a9a4264e2b69",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageIssuePage:AssignIssue",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e678315b-4f90-4ae7-aa8f-e51734e33cfa",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e356dd13-374c-4907-b0ee-86d126e72555",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "652440ae-fd5b-4e69-9782-2a09a0b6aee9",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "524d5522-09bc-4bb5-941d-f2b0197fa65a",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "b5447626-dd82-4114-aa81-db99a72e17a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cafe7651-94dc-470c-8882-52e2437f2440",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Issues",
+      "targets": [
+        ["linkText=View Issues", "linkText"],
+        ["css=.menu > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Issues')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/view_all_bug_page.php')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'View Issues')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "39f691be-392c-4fab-b966-f8a98e8a6480",
+      "comment": "",
+      "command": "click",
+      "target": "name=bug_arr[]",
+      "targets": [
+        ["name=bug_arr[]", "name"],
+        ["css=#buglist td > input", "css:finder"],
+        ["xpath=//input[@name='bug_arr[]']", "xpath:attributes"],
+        ["xpath=//table[@id='buglist']/tbody/tr[4]/td/input", "xpath:idRelative"],
+        ["xpath=//body/form/table/tbody/tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "82da23e0-a186-4f02-bab0-ce9364a5bfaa",
+      "comment": "",
+      "command": "click",
+      "target": "name=action",
+      "targets": [
+        ["name=action", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='action']", "xpath:attributes"],
+        ["xpath=//table[@id='buglist']/tbody/tr[5]/td/span/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "312b5d37-1a50-4172-9b9f-427cf56d8b5a",
+      "comment": "",
+      "command": "select",
+      "target": "name=action",
+      "targets": [],
+      "value": "label=Assign"
+    }, {
+      "id": "ec75186a-427b-46cd-8c49-b1f246162ecd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='OK']", "xpath:attributes"],
+        ["xpath=//table[@id='buglist']/tbody/tr[5]/td/span/input[2]", "xpath:idRelative"],
+        ["xpath=//span/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5712b0ca-d45b-4c2f-a7fa-7100c8802a6b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Assign Issues']", "xpath:attributes"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0007918-2816-4d40-8fd5-09a3fad8e612",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=administrator",
+      "targets": [
+        ["linkText=administrator", "linkText"],
+        ["css=.center > a", "css:finder"],
+        ["xpath=//a[contains(text(),'administrator')]", "xpath:link"],
+        ["xpath=//table[@id='buglist']/tbody/tr[4]/td[8]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:3000/mantisbt/view_user_page.php?id=1']", "xpath:href"],
+        ["xpath=//tr[4]/td[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'administrator')]", "xpath:innerText"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "01745018-de05-4bc2-a57a-d8fc26d54b5c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "abd9e36e-48c9-4486-a500-3ee5e6f173e1",
+    "name": "UpdateIssuePriorityTest",
+    "commands": [{
+      "id": "57b24820-91bf-456c-8aea-d499131e39c4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/mantisbt/login_page.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a8dedc84-5549-4a64-8a10-95061640c36d",
+      "comment": "",
+      "command": "echo",
+      "target": "{ASSESSOR}:ManageIssuePage:UpdateIssuePriority",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c38cdb83-2ff9-496b-b0e8-788e058f6893",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a08cb2d5-c0e6-4c33-bf6f-687e4147420b",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.row-1:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "administrator"
+    }, {
+      "id": "e6cf046a-740d-4a37-af06-65d7eadfa990",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e1a5a5b-e610-4209-8965-e583467864d1",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.row-2:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "3975e61a-2c8e-4abd-b443-5dfe30c168f8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//tr[6]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "95c753da-e2c5-4f1d-95fd-dabae03017d8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Issues",
+      "targets": [
+        ["linkText=View Issues", "linkText"],
+        ["css=.menu > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Issues')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/view_all_bug_page.php')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'View Issues')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c35c4ad8-2a7e-4e49-b97c-0d3258145424",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//img[@alt='Edit']",
+      "targets": [
+        ["css=td:nth-child(2) > a > img", "css:finder"],
+        ["xpath=//img[@alt='Edit']", "xpath:img"],
+        ["xpath=//table[@id='buglist']/tbody/tr[4]/td[2]/a/img", "xpath:idRelative"],
+        ["xpath=//td[2]/a/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec1e50a7-aa93-4cf2-a20d-7127cf87d6e3",
+      "comment": "",
+      "command": "click",
+      "target": "name=priority",
+      "targets": [
+        ["name=priority", "name"],
+        ["css=.row-2 > td:nth-child(2) > select", "css:finder"],
+        ["xpath=//select[@name='priority']", "xpath:attributes"],
+        ["xpath=//tr[7]/td[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71760901-28f8-4bba-bb59-d6e56aff79bf",
+      "comment": "",
+      "command": "select",
+      "target": "name=priority",
+      "targets": [],
+      "value": "label=low"
+    }, {
+      "id": "07e6b1a7-9d49-4d80-b519-89ac63779141",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//input[@value='Update Information']", "xpath:attributes"],
+        ["xpath=//tr[18]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "544ee5d0-bbb9-460e-be3f-a79a0a890c4c",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//tr[7]/td[2]",
+      "targets": [
+        ["css=.row-2:nth-child(7) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[7]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'low')]", "xpath:innerText"]
+      ],
+      "value": "low"
+    }, {
+      "id": "e76f68d0-3582-404d-89a6-b916fb31b92b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=a:nth-child(10)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/mantisbt/logout_page.php')]", "xpath:href"],
+        ["xpath=//a[10]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "97348475-db9c-4a8c-a607-0691edde2cd4",
+    "name": "MantisBT",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f9dc687d-ee9b-4699-bae6-cddd510da149", "39502e73-709f-4856-98da-758dbb4448b7", "3413a1c8-e0a3-4eba-98b1-bc7aa521b066", "f3fce757-1a7f-4e58-ba50-dc80f426a0a3", "33384a64-f5b5-44de-9cc2-4ff5fcaff4cc", "6b2e6b6c-3c8a-4394-910c-e5c2ea94f4b2", "cab5dfb0-06c8-4468-adbd-db71771fdead", "91c8ebc6-df07-4857-bd4a-6f5fa3e0db65", "a12155e0-f53f-42ba-8f42-deb5e2e0dc0e", "fc2f5aa6-eba1-41fe-ad77-199673967be2", "abd9e36e-48c9-4486-a500-3ee5e6f173e1"]
+  }],
+  "urls": ["http://localhost:3000/", "http://localhost:3000/mantisbt"],
+  "plugins": []
+}
