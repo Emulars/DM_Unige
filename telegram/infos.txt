@@ -1,0 +1,3 @@
+ApiToken:
+ChatId: 251282974
+BotName: iot_car_bot

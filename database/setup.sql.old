@@ -1,0 +1,43 @@
+-- Create the database
+CREATE DATABASE CarDatabase;
+GO
+
+-- Use the new database
+USE CarDatabase;
+GO
+
+-- Create the cars table
+CREATE TABLE Cars (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    PlateNumber NVARCHAR(50),
+    Model NVARCHAR(100),
+    FuelType NVARCHAR(50)
+);
+GO
+
+-- Insert some test data into the cars table
+INSERT INTO Cars (PlateNumber, Model, FuelType) VALUES
+('ABC123', 'Toyota Camry', 'Petrol'),
+('XYZ789', 'Honda Civic', 'Diesel'),
+('DEF456', 'Tesla Model S', 'Electric');
+GO
+
+-- Create the data table to store data received from MQTT
+CREATE TABLE CarData (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    carid INT,
+    timestamp DATETIME,
+    speed FLOAT,
+    rpm FLOAT,
+    throttle_pos FLOAT,
+    battery_voltage FLOAT,
+    transmission_temperature FLOAT,
+    oil_temperature FLOAT,
+    oil_pressure FLOAT,
+    fuel_level FLOAT,
+    fuel_consumption_rate FLOAT,
+    latitude FLOAT,
+    longitude FLOAT,
+    FOREIGN KEY (carid) REFERENCES Cars(ID)
+);
+GO

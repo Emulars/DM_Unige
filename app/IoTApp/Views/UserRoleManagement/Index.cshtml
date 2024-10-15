@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityUser>
+
+@{
+    ViewData["Title"] = "User Role Management";
+    var userManager = ViewBag.UserManager as UserManager<IdentityUser>;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Roles</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    @{
+                        var roles = await userManager.GetRolesAsync(user);
+                    }
+                    @string.Join(", ", roles)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-userId="@user.Id" class="btn custom-button">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
