@@ -1,0 +1,45 @@
+{
+  "services": [
+    {
+        "ip": "172.18.0.1",
+        "port": 22,
+        "service_name": "WordPress",
+        "service_location" : "remote",
+        "container_name" : "dvwp_wordpress_1",
+        "user" : "davide",
+        "password" : "davide",
+        "version_command": "grep '$wp_version =' wp-includes/version.php | cut -d \"'\" -f 2"
+    },
+    {
+      "ip": "172.18.0.1",
+      "port": 22,
+      "service_name": "MySQL",
+      "service_location" : "remote",
+      "container_name" : "dvwp_mysql_1",
+      "user" : "davide",
+      "password" : "davide",
+      "version_command": "mysql --version | sed 's/[^0-9.]*\\([0-9.]*\\).*/\\1/'"
+    },
+    {
+      "ip": "172.18.0.1",
+      "port": 22,
+      "service_name": "Apache",
+      "service_location" : "remote",
+      "container_name" : "dvwp_phpmyadmin_1",
+      "user" : "davide",
+      "password" : "davide",
+      "version_command": "apachectl -v | grep -oE '[0-9]+\\.[0-9]+\\.[0-9]+' | awk '{print $1}'"
+    },
+    {
+      "ip": "172.18.0.1",
+      "port": 22,
+      "service_name": "Postgres",
+      "service_location" : "remote",
+      "container_name" : "postgres-db",
+      "user" : "davide",
+      "password" : "davide",
+      "version_command": "psql --version | sed -n 's/[^0-9]*\\([0-9.]*\\).*/\\1/p'"
+    }
+  ]
+}
+  

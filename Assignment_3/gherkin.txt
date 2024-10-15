@@ -1,0 +1,123 @@
+# https://github.com/spring-projects/spring-petclinic
+# Miggiano Davide - 4840761
+
+Feature: Add New Pet
+
+  Scenario: Veterinarian adds a new pet with valid information for an existing owner
+    Given the veterinarian has selected the owner "Betty Davis" 
+    And is on the Add New Pet page
+    When they fill in valid pet information (name: "Fluffy", Birth date: 05/12/2000, Type: "cat")
+    And they submit the form
+    Then the pet "Fluffy" should be added successfully under owner "Betty Davis"
+
+  Scenario: Veterinarian adds a new pet with missing required fields for an existing owner
+    Given the veterinarian has selected an owner 
+    And is on the Add New Pet page
+    When they submit the form without filling in all required fields (Name and Birth Date)
+    Then they should see an error message for each required field prompting them to fill
+
+  Scenario: Veterinarian adds a new pet with invalid Birth Date for an existing owner
+    Given the veterinarian has selected an owner 
+    And is on the Add New Pet page
+    When they fill in the pet Birth Date field with incorrect data format (e.g., "02/31/2022")
+    And they submit the form
+    Then they should see an error message prompting them "invalid date"
+
+
+Feature: Edit Existing Pet
+
+  Scenario: Veterinarian edits an existing pet with valid information
+    Given the veterinarian has selected an owner 
+    And there is an existing pet belonging to the owner
+    And is on the Edit Pet page
+    When they update the pet information with valid data (e.g., type: "Dog")
+    And they submit the form
+    Then the pet information should be updated successfully
+
+  Scenario: Veterinarian edits an existing pet with missing required fields
+    Given the veterinarian has selected an owner 
+    And there is an existing pet belonging to the owner
+    And is on the Edit Pet page
+    When they update the pet information without filling in all required fields
+    And they submit the form
+    Then they should see an error message "is required" for each required field 
+
+  Scenario: Veterinarian edits an existing pet with an invalid Birth Date
+    Given the veterinarian has selected an owner
+    And there is an existing pet belonging to the owner
+    And is on the Edit Pet page
+    When they fill in the pet Birth Date field with incorrect data format (e.g., "02/31/2022")
+    And they submit the form
+    Then they should see an error message prompting them "invalid date"
+
+
+Feature: Add visit
+
+    Scenario: Veterinarian add a visit for an existing pet with valid information
+        Given the veterinarian has selected an owner 
+        And there is an existing pet belonging to the owner
+        And is on the New visit page
+        When they fill all the information with valid data 
+        And they submit the form
+        Then a new visit is being added successfully under the owner's pet
+    
+    Scenario: Veterinarian add a visit for an existing pet with missing Description field
+        Given the veterinarian has selected an owner 
+        And there is an existing pet belonging to the owner
+        And is on the New visit page
+        When they fill the Date information with valid data
+        And leave blank the Description field
+        And they submit the form
+        Then they should see an error message prompting them "must not be blank"
+
+    Scenario: Veterinarian add a visit for an existing pet with wrong Date format
+        Given the veterinarian has selected an owner 
+        And there is an existing pet belonging to the owner
+        And is on the New visit page
+        When they fill the Date with incorrect data format (e.g., "02/31/2022")
+        And fill the Description field
+        And they submit the form
+        Then they should see an error message prompting them "Please enter a valid date"
+
+
+Feature: Add owner
+
+    Scenario: Veterinarian add a new owner with valid information
+        Given the veterinarian is on the New Owner page
+        When they fill all the information with valid data 
+        And they submit the form
+        Then a new owner is being added successfully
+
+    Scenario: Veterinarian add an existing owner
+        Given the veterinarian is on the New Owner page
+        When they fill all the information with valid data of an existing owner (e.g., George Franklin, 110 W. Liberty St.,Madison, 6085551023)
+        And they submit the form
+        Then they should see an error message prompting them "This owner already exists"
+
+    Scenario: Veterinarian add a new owner leaving all the required information blanked
+        Given the veterinarian is on the New Owner page
+        When they submit the form
+        Then they should see an error message for each required field prompting them "This field is required"
+
+
+Feature: Edit Owner
+
+    Scenario: Veterinarian edit an existing owner with valid information
+        Given the veterinarian has selected an existing owner
+        and in on the Edit owner page
+        When they fill all the information with valid data 
+        And they submit the form
+        Then the owner's information is being updated successfully
+
+    Scenario: Veterinarian edit an existing owner leaving all the required information blanked
+        Given the veterinarian has selected an existing owner
+        and in on the Edit owner page
+        When they leave blanked any field 
+        And they submit the form
+        Then they should see an error message,for each required field, prompting them "This field is required"
+    
+
+
+
+
+
