@@ -1,0 +1,139 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var rideStarted = Context.Session.GetString("RideStarted") ?? "";
+}
+
+<div class="text-center">
+    @if (rideStarted == "" || !bool.Parse(rideStarted))
+    {
+        <h2 class="display-4">Scan the QR code on the vehicle for starting the ride!</h2>
+        <div id="reader" class="mt-5" width="600px"></div>
+    }else
+    {
+        <h2 class="mb-4">Click to take note of a driver error</h2>
+    }
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button data-errorcode="1" class="btn btn-outline-danger errorButton w-75">Crossing</button>
+            </div>
+            <div class="col">
+                <button data-errorcode="2" class="btn btn-outline-danger errorButton w-75">Precedence</button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button data-errorcode="3" class="btn btn-outline-dark errorButton w-75">Stop</button>
+            </div>
+            <div class="col">
+                <button data-errorcode="4" class="btn btn-outline-dark errorButton w-75">Sidewalk</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="endRideButton" class="btn custom-button mt-3 w-50">End Ride</button>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            let rideStarted = '@rideStarted.ToString().ToLower()';
+
+            if (rideStarted == 'true') {
+                // Handle End Ride button click
+                $('#endRideButton').click(function () {
+                    $.post('/Home/EndRide')
+                        .done(function () {
+                            location.reload();
+                        })
+                        .fail(function (error) {
+                            console.error('Failed to end the ride.', error);
+                        });
+                });
+
+                $('#endRideButton').show();
+
+                $('.errorButton').click(function () {
+                    let err = $(this).data('errorcode');
+
+                    $.post('/Home/WriteError', { errorCode: err})
+                        .done(function () {
+                            location.reload();
+                        })
+                        .fail(function (error) {
+                            console.error('Failed to send the ride error code.', error);
+                        });
+                });
+
+                $('.errorButton').show();
+            }
+            else{
+                $('.errorButton').hide();
+                $('#endRideButton').hide();
+
+                if ($("#reader").length) 
+                {
+                    function onScanSuccess(decodedText, decodedResult) {
+                        console.log(`Code matched = ${decodedText}`, decodedResult);
+                        // Stop scanning after success
+                        html5QrcodeScanner.clear().then(_ => {
+                            console.log('QR Code scanning stopped.');
+
+                            // Send the value to the backend (HomeController) to start the ride
+                            $.post('/Home/StartRide', { qrCode: decodedText })
+                                .done(function () {
+                                    location.reload();
+                                })
+                                .fail(function (error) {
+                                    console.error('Failed to start the ride.', error);
+                                });
+                        }).catch(error => {
+                            console.error('Failed to clear scanning.', error);
+                        });
+                    }
+
+                    function onScanFailure(error) {
+                        console.warn(`Code scan error = ${error}`);
+                    }
+
+                    let html5QrcodeScanner = new Html5QrcodeScanner(
+                        "reader",
+                        {
+                            fps: 10,
+                            qrbox: { width: 250, height: 250 },
+                            disableFlip: false, // Optionally disable QR Code auto-flip
+                            rememberLastUsedCamera: true,
+                            aspectRatio: 1.0,
+                            formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE]
+                        },
+                        false
+                    );
+
+                    // Render the scanner UI
+                    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+                    // Start the camera immediately without user interaction
+                    Html5Qrcode.getCameras().then(cameras => {
+                        if (cameras && cameras.length) {
+                            let cameraId = cameras[0].id;
+                            html5QrcodeScanner.start(cameraId, {
+                                fps: 10,
+                                qrbox: { width: 250, height: 250 }
+                            }, onScanSuccess, onScanFailure);
+                        }
+                    }).catch(error => {
+                        console.error('Unable to access cameras.', error);
+                    });
+                }
+                else
+                {
+                    console.warn('Element with id="reader" not found.');
+                }
+            
+            }
+
+        });
+    </script>
+}

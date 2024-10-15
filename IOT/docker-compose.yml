@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  database:
+    build:
+      context: ./database
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrongPassw0rd"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.2
+
+  mqtt-broker:
+    build:
+      context: ./mqtt-broker
+    environment:
+      TELEGRAM_TOKEN: "7315510722:AAErbp8dEG0vrqG9H0INFHTpWsxvxoqEyNY"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.3
+
+  middleware:
+    build:
+      context: ./middleware
+    environment:
+      TELEGRAM_TOKEN: "7315510722:AAErbp8dEG0vrqG9H0INFHTpWsxvxoqEyNY"
+    ports:
+      - "1880:1880"
+    volumes:
+      - node_red_data:/data
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.4
+
+  iot-app:
+    build:
+      context: ./app/IoTApp
+    ports:
+      - "80:80"
+      - "33443:33443"
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.5
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+
+volumes:
+  sql_data:
+  mosquitto_data:
+  mosquitto_log:
+  node_red_data:
+
+networks:
+  my_network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

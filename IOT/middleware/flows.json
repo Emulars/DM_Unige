@@ -1,0 +1,550 @@
+[
+    {
+        "id": "82f0c0d0ce9193b9",
+        "type": "tab",
+        "label": "Middleware",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ea30d3e06a4f026d",
+        "type": "mqtt in",
+        "z": "82f0c0d0ce9193b9",
+        "name": "MQTT Input",
+        "topic": "car/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 570,
+        "y": 220,
+        "wires": [
+            [
+                "66126da7b2c0a77b",
+                "db0f04e63efd8a62"
+            ]
+        ]
+    },
+    {
+        "id": "66126da7b2c0a77b",
+        "type": "function",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Store Data",
+        "func": "let data;\ntry {\n    if (typeof msg.payload === 'string') {\n        data = JSON.parse(msg.payload);\n    } else {\n        data = msg.payload;\n    }\n} catch (error) {\n    node.error('Failed to parse JSON: ' + error.message);\n    return null;\n}\n\nconst carId = data.car_id;\nglobal.set(`latestData_${carId}`, data);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 220,
+        "wires": [
+            [
+                "5dcf9a1cb5ab88bf"
+            ]
+        ]
+    },
+    {
+        "id": "769021356fb2e3e1",
+        "type": "comment",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Data from Raspberry PI",
+        "info": "",
+        "x": 280,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c3643726c35fa9ba",
+        "type": "comment",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Latest data for car x",
+        "info": "",
+        "x": 270,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4ca55472ab70d4bd",
+        "type": "comment",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Get car ID by plate number",
+        "info": "",
+        "x": 290,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5dcf9a1cb5ab88bf",
+        "type": "function",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Query",
+        "func": "let data;\n\ntry {\n    if (typeof msg.payload === 'string') {\n        data = JSON.parse(msg.payload);\n    } else {\n        data = msg.payload;\n    }\n} catch (error) {\n    node.error('Failed to parse JSON: ' + error.message);\n    return null;\n}\n\n// Prepare data for SQL\n/*\nconst sqlQuery = {\n    query: `INSERT INTO CarDatabase.dbo.CarData (carid, timestamp, speed, rpm, throttle_pos, battery_voltage, transmission_temperature, oil_temperature, oil_pressure, fuel_level, fuel_consumption_rate, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,\n    params: [\n        parseInt(data.car_id), data.timestamp, data.vehicle_speed, data.engine_rpm, data.throttle_pos, data.battery_voltage,\n        data.transmission_temperature, data.oil_temperature, data.oil_pressure, data.fuel_level,\n        data.fuel_consumption_rate, data.latitude, data.longitude\n    ]\n};\n*/\n\n// Construct SQL query string with parameters embedded\nconst sqlQuery = `\n    INSERT INTO IoTApp.dbo.VehicleData \n    (vehicleid, timestamp, speed, rpm, throttle_pos, battery_voltage, transmission_temperature, oil_temperature, oil_pressure, fuel_level, fuel_consumption_rate, latitude, longitude) \n    VALUES \n    (${parseInt(data.car_id)}, '${data.timestamp}', ${data.vehicle_speed}, ${data.engine_rpm}, ${data.throttle_pos}, ${data.battery_voltage}, \n    ${data.transmission_temperature}, ${data.oil_temperature}, ${data.oil_pressure}, ${data.fuel_level}, \n    ${data.fuel_consumption_rate}, ${data.latitude}, ${data.longitude})\n`;\n\n// Send the formatted data to the next nodes\nreturn [{ payload: sqlQuery }];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 220,
+        "wires": [
+            [
+                "59c188038bcb2acc",
+                "7ed0fef1840ffcce",
+                "a98a6d97e0859aec"
+            ]
+        ]
+    },
+    {
+        "id": "aaac3aa22a8f3ed8",
+        "type": "telegram command",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Telegram Command GetData",
+        "command": "/getData",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "bot": "a86957f45dfaf8e1",
+        "strict": false,
+        "hasresponse": false,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 1,
+        "x": 640,
+        "y": 340,
+        "wires": [
+            [
+                "b6d49010faf070da"
+            ]
+        ]
+    },
+    {
+        "id": "b6d49010faf070da",
+        "type": "function",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Prepare Telegram Message",
+        "func": "const chatId = msg.payload.chatId;\nconst commandParts = msg.payload.content.split(' ');\n\n// Check if the command is properly formed\nif (commandParts.length !== 2) {\n    msg.payload = { chatId, type: 'message', content: '❗ Usage: /getData <car_id>' };\n    return [msg];\n}\n\nconst carId = commandParts[1];\nconst latestData = global.get(`latestData_${carId}`);\n\n// Check if there's data available for the requested car ID\nif (!latestData) {\n    msg.payload = { chatId, type: 'message', content: `⚠️ No data found for car ID: ${carId}` };\n    return [msg];\n}\n\nconst data = latestData;\n\n// Create a message to send the car's latest data\nconst telegramMessage = {\n    chatId,\n    type: 'message',\n    content: `🚗 Car ID: ${carId}\n    \\n💨 Vehicle Speed: ${data.vehicle_speed} km/h\n    \\n🔄 Engine RPM: ${data.engine_rpm} rpm\n    \\n📍 GPS: ${data.latitude}, ${data.longitude}`\n};\n\nmsg.payload = telegramMessage;\nreturn [msg];\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 340,
+        "wires": [
+            [
+                "22a78bc43f3dd119",
+                "415be8f1240d8497"
+            ]
+        ]
+    },
+    {
+        "id": "e372ee8c81d05cef",
+        "type": "telegram command",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Telegram Command GetCars",
+        "command": "/cars",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "bot": "a86957f45dfaf8e1",
+        "strict": false,
+        "hasresponse": false,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 1,
+        "x": 640,
+        "y": 440,
+        "wires": [
+            [
+                "74a696dd83d4765a"
+            ]
+        ]
+    },
+    {
+        "id": "048795929cb9406d",
+        "type": "function",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Prepare Cars List",
+        "func": "const rows = msg.query;\nconst chatId = msg.payload.chatId;\n\n// Initialize the content with headers and add emojis\nlet content = '🚗 Car ID - Car Plate\\n\\n';\nrows.forEach(row => {\n    content += `🔹 ${row.Id} - ${row.PlateNumber}\\n`;\n});\n\nmsg.payload = { chatId, type: 'message', content };\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1130,
+        "y": 440,
+        "wires": [
+            [
+                "22a78bc43f3dd119"
+            ]
+        ]
+    },
+    {
+        "id": "22a78bc43f3dd119",
+        "type": "telegram sender",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Telegram Output",
+        "bot": "a86957f45dfaf8e1",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1470,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59c188038bcb2acc",
+        "type": "MSSQL",
+        "z": "82f0c0d0ce9193b9",
+        "mssqlCN": "53d14bd15c94831a",
+        "name": "Insert",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": 1,
+        "query": "",
+        "modeOpt": "queryMode",
+        "modeOptType": "query",
+        "queryOpt": "payload",
+        "queryOptType": "msg",
+        "paramsOpt": "",
+        "paramsOptType": "none",
+        "rows": "rows",
+        "rowsType": "msg",
+        "parseMustache": true,
+        "params": [],
+        "x": 1150,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "74a696dd83d4765a",
+        "type": "MSSQL",
+        "z": "82f0c0d0ce9193b9",
+        "mssqlCN": "53d14bd15c94831a",
+        "name": "SELECT",
+        "outField": "query",
+        "returnType": 0,
+        "throwErrors": 1,
+        "query": "SELECT Id, PlateNumber FROM IoTApp.dbo.Vehicle;",
+        "modeOpt": "queryMode",
+        "modeOptType": "query",
+        "queryOpt": "",
+        "queryOptType": "editor",
+        "paramsOpt": "",
+        "paramsOptType": "none",
+        "rows": "rows",
+        "rowsType": "msg",
+        "parseMustache": true,
+        "params": [],
+        "x": 900,
+        "y": 440,
+        "wires": [
+            [
+                "048795929cb9406d",
+                "9b499c936836fe89"
+            ]
+        ]
+    },
+    {
+        "id": "7ed0fef1840ffcce",
+        "type": "debug",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Query-Insert",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload.query",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9b499c936836fe89",
+        "type": "debug",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Query-Select",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "db0f04e63efd8a62",
+        "type": "debug",
+        "z": "82f0c0d0ce9193b9",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a98a6d97e0859aec",
+        "type": "debug",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Query-Insert",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload.params",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "478215017f9704f4",
+        "type": "telegram command",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Help",
+        "command": "/help",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "a86957f45dfaf8e1",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 760,
+        "wires": [
+            [
+                "6c6757659fe3047f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6c6757659fe3047f",
+        "type": "function",
+        "z": "82f0c0d0ce9193b9",
+        "name": "help message",
+        "func": "var helpMessage = \"ℹ️ Help Menu\\n\";\n\nhelpMessage += \"\\r\\n❓ /help - shows help\";\nhelpMessage += \"\\r\\n🚗 /cars - all the available cars info\";\nhelpMessage += \"\\r\\n📊 /getData <car_id> - last retrieved detailed car's info\";\nhelpMessage += \"\\r\\n🌍 /getLocation <car_id> - last retrieved car's GPS info\";\n\nmsg.payload.content = helpMessage;\n\nmsg.payload.parse_mode = \"Markdown\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 760,
+        "wires": [
+            [
+                "22a78bc43f3dd119"
+            ]
+        ]
+    },
+    {
+        "id": "06fe5009e2e37ab7",
+        "type": "telegram command",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Start",
+        "command": "/start",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "a86957f45dfaf8e1",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 700,
+        "wires": [
+            [
+                "6c6757659fe3047f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "aad89d346b2c49ae",
+        "type": "telegram command",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Location",
+        "command": "/getLocation",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "a86957f45dfaf8e1",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 580,
+        "y": 580,
+        "wires": [
+            [
+                "1d980fa79966a16f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "64f1199e162120a4",
+        "type": "comment",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Get car last location by car id",
+        "info": "",
+        "x": 300,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "06d01776967999ed",
+        "type": "comment",
+        "z": "82f0c0d0ce9193b9",
+        "name": "List the available commands for the bot",
+        "info": "",
+        "x": 330,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "1d980fa79966a16f",
+        "type": "function",
+        "z": "82f0c0d0ce9193b9",
+        "name": "Get Last Location",
+        "func": "const chatId = msg.payload.chatId;\nconst commandParts = msg.payload.content.split(' ');\n\n// Check if the command is properly formed\nif (commandParts.length !== 2) {\n    msg.payload = { chatId, type: 'message', content: '❗ Usage: /getLocation <car_id>' };\n    return [msg];\n}\n\nconst carId = commandParts[1];\nconst latestData = global.get(`latestData_${carId}`);\n\n// Check if there's data available for the requested car ID\nif (!latestData) {\n    msg.payload = { chatId, type: 'message', content: `⚠️ No data found for car ID: ${carId}` };\n    return [msg];\n}\n\nconst data = latestData;\n\n// Create a message to send the location of the car\nconst telegramMessage = {\n    chatId,\n    type: 'venue',\n    content: {\n        \"latitude\": data.latitude,\n        \"longitude\": data.longitude,\n        \"title\": `📍 Last received position for car ${carId}`\n    }\n};\n\nmsg.payload = telegramMessage;\nreturn [msg];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 580,
+        "wires": [
+            [
+                "22a78bc43f3dd119"
+            ]
+        ]
+    },
+    {
+        "id": "415be8f1240d8497",
+        "type": "debug",
+        "z": "82f0c0d0ce9193b9",
+        "name": "getData",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "mqtt_broker",
+        "type": "mqtt-broker",
+        "name": "MQTT Broker",
+        "broker": "172.20.0.3",
+        "port": "1883",
+        "clientid": "node_red_client",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "5",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a86957f45dfaf8e1",
+        "type": "telegram bot",
+        "botname": "iot_car_bot",
+        "usernames": "",
+        "chatids": "251282974",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "",
+        "socksusername": "",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "",
+        "publicbotport": "",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "53d14bd15c94831a",
+        "type": "MSSQL-CN",
+        "tdsVersion": "7_4",
+        "name": "Container",
+        "server": "172.20.0.2",
+        "port": "1433",
+        "encyption": true,
+        "trustServerCertificate": true,
+        "database": "IoTApp",
+        "useUTC": true,
+        "connectTimeout": "15000",
+        "requestTimeout": "15000",
+        "cancelTimeout": "5000",
+        "pool": "5",
+        "parseJSON": false,
+        "enableArithAbort": true,
+        "readOnlyIntent": false
+    }
+]
