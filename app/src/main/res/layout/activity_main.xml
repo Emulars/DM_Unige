@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/sfondo">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="100dp"
+        app:srcCompat="@drawable/logo" />
+
+    <Button
+        android:id="@+id/btt_start"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_corner"
+        android:text="Inzia quiz"
+        android:textColor="@color/purple_700"
+        app:backgroundTint="@color/whiteblue"
+        android:layout_marginTop="50dp"
+        />
+</LinearLayout>
