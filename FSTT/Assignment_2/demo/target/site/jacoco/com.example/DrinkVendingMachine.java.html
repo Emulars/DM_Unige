@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DrinkVendingMachine.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">DrinkVendingMachine.java</span></div><h1>DrinkVendingMachine.java</h1><pre class="source lang-java linenums">package com.example;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class DrinkVendingMachine {
+
+<span class="nc" id="L8">    private BRANDS brandName = null;</span>
+<span class="nc" id="L9">    private float availableCredit = 0;</span>
+<span class="nc" id="L10">    private ArrayList&lt;Snack&gt; drinkList = new ArrayList&lt;Snack&gt;();</span>
+
+<span class="nc" id="L12">    public DrinkVendingMachine(){</span>
+<span class="nc" id="L13">        int size = BRANDS.values().length;</span>
+<span class="nc" id="L14">        int index = (int)(Math.random()) * size;</span>
+
+        //Select random Brand
+<span class="nc" id="L17">        this.brandName = BRANDS.values()[index];</span>
+<span class="nc" id="L18">        populateDrinkList();</span>
+<span class="nc" id="L19">    }</span>
+
+<span class="nc" id="L21">    public DrinkVendingMachine(float startCredit, BRANDS brand) {</span>
+<span class="nc" id="L22">        this.availableCredit = startCredit;</span>
+<span class="nc" id="L23">        this.brandName = brand;</span>
+
+<span class="nc" id="L25">        populateDrinkList();</span>
+<span class="nc" id="L26">    }</span>
+    
+    //===============================
+    //===  Methods
+    //===============================
+
+    //Don't worry this is just populating our drink list
+    private void populateDrinkList(){
+<span class="nc" id="L34">        this.drinkList.addAll(Arrays.asList(DefaultSnacks.snackList));</span>
+<span class="nc" id="L35">    }</span>
+
+    // This is how we'll select our &quot;snack&quot; from the array
+    public Snack selectDrink(int arrayPosition){
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if(arrayPosition &lt;=  drinkList.size()) {</span>
+<span class="nc" id="L40">            Snack selection = drinkList.get(arrayPosition);</span>
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">            if(this.availableCredit &lt; selection.cost()){</span>
+                //TODO replace with Log4j
+<span class="nc" id="L44">                System.out.println(&quot;WARNING: you do not have enough credit!&quot;);</span>
+<span class="nc" id="L45">                System.out.println(&quot;WARNING: machine credit - £&quot; + this.availableCredit);</span>
+<span class="nc" id="L46">                return null;</span>
+            }
+            else {
+                // let's deduct machine credit
+<span class="nc" id="L50">                availableCredit -= selection.cost();</span>
+<span class="nc" id="L51">                return selection;</span>
+            }
+        }
+        else{
+            //TODO replace with Log4j
+<span class="nc" id="L56">            System.out.println(&quot;WARNING: Item does not exist.&quot;);</span>
+<span class="nc" id="L57">            return null;</span>
+        }
+    }
+
+    public void giveCredit(Person user, float credit){
+        //TODO replace with Log4j
+<span class="nc" id="L63">        System.out.println(&quot;INFO: You have entered �&quot;+credit);</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        this.availableCredit += user.getCredit(credit) == 0 ? credit : user.getCredit(credit);</span>
+<span class="nc" id="L65">    }</span>
+
+    //===============================
+    //===  'get'ors
+    //===============================
+    public float getAvailableCredit() {
+<span class="nc" id="L71">        return availableCredit;</span>
+    }
+
+    public ArrayList&lt;Snack&gt; getDrinkList() {
+<span class="nc" id="L75">        return drinkList;</span>
+    }
+
+    public BRANDS getBrandName() {
+<span class="nc" id="L79">        return brandName;</span>
+    }
+
+    //===============================
+    //===  'set'ors
+    //===============================
+    public void setAvailableCredit(float availableCredit) {
+<span class="nc" id="L86">        this.availableCredit = availableCredit;</span>
+<span class="nc" id="L87">    }</span>
+
+    public void setDrinkList(ArrayList&lt;Snack&gt; drinkList) {
+<span class="nc" id="L90">        this.drinkList = drinkList;</span>
+<span class="nc" id="L91">    }</span>
+
+    public void setBrandName(BRANDS brandName) {
+<span class="nc" id="L94">        this.brandName = brandName;</span>
+<span class="nc" id="L95">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Wallet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">Wallet.java</span></div><h1>Wallet.java</h1><pre class="source lang-java linenums">package com.example;
+
+public class Wallet {
+
+<span class="nc" id="L5">    private String brand = &quot;Generic&quot;;</span>
+<span class="nc" id="L6">    private float storedCredit = 0.5f; // using f after a decimal value treats it the as a float(rather than a double)</span>
+
+<span class="nc" id="L8">    public Wallet(){}</span>
+
+<span class="nc" id="L10">    public Wallet(float startCredit){</span>
+<span class="nc" id="L11">        this.brand = &quot;Generic&quot;;</span>
+<span class="nc" id="L12">        this.storedCredit = startCredit; // using f after a decimal value treats it the as a float(rather than a double)</span>
+<span class="nc" id="L13">    }</span>
+
+<span class="nc" id="L15">    public Wallet(String brandName, float startCredit){</span>
+<span class="nc" id="L16">        this.brand = brandName;</span>
+<span class="nc" id="L17">        this.storedCredit = startCredit; // using f after a decimal value treats it the as a float(rather than a double)</span>
+<span class="nc" id="L18">    }</span>
+
+	//==================
+	//===	Methods
+	//==================
+
+    public void addCredit(float credit){
+<span class="nc" id="L25">        this.storedCredit += credit;</span>
+<span class="nc" id="L26">    }</span>
+    
+    public float getCredit(float retrieve) {
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if(retrieve &gt; this.storedCredit){</span>
+            //TODO replace 'Sys.out's with Log4j
+<span class="nc" id="L31">            System.out.println(&quot;Warning: request exceeds value in wallet!&quot;);</span>
+<span class="nc" id="L32">            System.out.println(&quot;Request: &quot; + retrieve + &quot;,\tstored value: &quot; + retrieve);</span>
+
+<span class="nc" id="L34">            return 0;</span>
+        }else {
+<span class="nc" id="L36">        	this.storedCredit -= retrieve;</span>
+        	
+<span class="nc" id="L38">            return retrieve;</span>
+        }
+    }
+    
+    //===============================
+    //===  'get'ors
+    //===============================
+
+    public float getAllCredit(){
+<span class="nc" id="L47">        return this.storedCredit;</span>
+    }
+
+    public String getBrand(String band) {
+<span class="nc" id="L51">        return this.brand;</span>
+    }
+
+    //===============================
+    //===  'set'ors
+    //===============================
+    public void setCredit(float credit){
+<span class="nc" id="L58">        this.storedCredit = credit;</span>
+<span class="nc" id="L59">    }</span>
+
+    public void setBrand(String brand){
+<span class="nc" id="L62">        this.brand = brand;</span>
+<span class="nc" id="L63">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

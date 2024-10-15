@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Person.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">Person.java</span></div><h1>Person.java</h1><pre class="source lang-java linenums">package com.example;
+
+public class Person {
+
+<span class="nc" id="L5">    private String name = &quot;&quot;;</span>
+<span class="nc" id="L6">    private Wallet myWallet = null;</span>
+
+<span class="nc" id="L8">    public Person(String name){</span>
+<span class="nc" id="L9">        this.name = name;</span>
+<span class="nc" id="L10">    }</span>
+
+<span class="nc" id="L12">    public Person(String name, Wallet wallet){</span>
+<span class="nc" id="L13">        this.name = name;</span>
+<span class="nc" id="L14">        this.myWallet = wallet;</span>
+<span class="nc" id="L15">    }</span>
+    
+	//==================
+	//===	Methods
+	//==================
+    
+    public float getCredit(float retrieve){
+    	// if our wallet exists.
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if(myWallet != null) {</span>
+        	
+        	// If what we are trying to retrieve our money within our limits
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        	if(retrieve &lt;= myWallet.getAllCredit()) {</span>
+<span class="nc" id="L27">				return this.myWallet.getCredit(retrieve);</span>
+        	}else {
+<span class="nc" id="L29">        		System.out.println(&quot;WARNING: &quot;+this.name+&quot; does not have the required credit!&quot;);</span>
+<span class="nc" id="L30">        		System.out.println(&quot;WARNING: Available credit: &quot;+this.myWallet.getAllCredit());</span>
+<span class="nc" id="L31">        		return 0;</span>
+        	}
+        	
+        }else{
+            //TODO replace with Log4j
+<span class="nc" id="L36">            System.out.println(&quot;WARNING: &quot;+this.name+&quot; does not own a wallet!&quot;);</span>
+<span class="nc" id="L37">            return 0;</span>
+        }
+    }
+    
+    public void addCredit(float credit){
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if(myWallet != null) {</span>
+<span class="nc" id="L43">            this.myWallet.addCredit(credit);</span>
+        }else{
+            //TODO replace with Log4j
+<span class="nc" id="L46">            System.out.println(&quot;WARNING: &quot;+this.name+&quot; does not own a wallet!&quot;);</span>
+        }
+<span class="nc" id="L48">    }</span>
+    
+    public void createWallet()
+    {
+        // complete the method to add a Wallet to a Person if it does not exist
+
+<span class="nc" id="L54">    }</span>
+    //===============================
+    //===  'get'ors
+
+    public String getName(){
+<span class="nc" id="L59">        return this.name;</span>
+    }
+    
+    public Wallet getWallet() {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">    	if(myWallet != null) {</span>
+<span class="nc" id="L64">    		return this.myWallet;</span>
+    	}else {
+<span class="nc" id="L66">    		System.out.print(&quot;Warning: &quot;+this.name+&quot; does not have a wallet to retrieve.&quot;);</span>
+<span class="nc" id="L67">    		return null;</span>
+    	}
+    }
+
+    //===============================
+    //===  'set'ors
+
+    public void setName(String name){
+<span class="nc" id="L75">        this.name = name;</span>
+<span class="nc" id="L76">    }</span>
+    
+    public void setWallet(Wallet wallet) {
+<span class="nc" id="L79">    	this.myWallet = wallet;</span>
+<span class="nc" id="L80">    }</span>
+    
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
